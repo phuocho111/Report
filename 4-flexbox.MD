@@ -1,4 +1,24 @@
 # Flexbox
+- [Flexbox](#flexbox)
+    - [Thành phần: thùng chứa cha (flex container) và các phần tử con nằm bên trong (flex items)](#thành-phần-thùng-chứa-cha-flex-container-và-các-phần-tử-con-nằm-bên-trong-flex-items)
+    - [Thuộc tính:](#thuộc-tính)
+  - [Flexbox Properties](#flexbox-properties)
+    - [1. display: flex](#1-display-flex)
+    - [2.  flex-direction:](#2--flex-direction)
+    - [3.  flex-wrap](#3--flex-wrap)
+    - [4. flex-flow: kết hợp flex-direction và flex-wrap](#4-flex-flow-kết-hợp-flex-direction-và-flex-wrap)
+    - [5.  justify-content:](#5--justify-content)
+    - [6. align-items](#6-align-items)
+    - [7 .align-content](#7-align-content)
+  - [Properties for the Children(flex items)](#properties-for-the-childrenflex-items)
+    - [1.  order](#1--order)
+    - [2. flex-grow](#2-flex-grow)
+    - [3.  flex-shrink](#3--flex-shrink)
+    - [4. flex-basis](#4-flex-basis)
+    - [5.  flex](#5--flex)
+    - [6. align-self](#6-align-self)
+  - [The gap property](#the-gap-property)
+   
 ### Thành phần: thùng chứa cha (flex container) và các phần tử con nằm bên trong (flex items)
 ### Thuộc tính:
 | Thuộc tính     | khái niệm |
@@ -13,14 +33,14 @@
 ---
 ## Flexbox Properties
 
-1. ### display: flex
+ ### 1. display: flex
  + định nghĩa một flex container, và cũng là việc bắt buộc nếu bạn làm việc với flexbox.
 ```css
 .container {
   display: flex; /* or inline-flex */
 }
 ```
-2. ### flex-direction:
+ ### 2.  flex-direction:
 + dùng để chỉ định hướng hiển thì của các item, việc thay đổi hướng hiển thị flex cũng thể có thể cho phép ta thay đổi vị trí của các flex item
 ```css
 .container {
@@ -35,7 +55,7 @@
 |column|từ trên xuống|
 |column-reverse|từ dưới lên|
 
-3. ### flex-wrap
+ ### 3.  flex-wrap
 + dùng để kiểm soát việc bọc các items nằm gọn trong container. Nếu chúng ta giảm chiều rộng của trình duyệt, chúng ta có thể không nhìn thấy một số item trên cùng một dòng.
 ```css
 .container {
@@ -47,13 +67,13 @@
 | nowrap | tất cả flex-items trên 1 dòng|
 |wrap| các flex-items sẽ tự động xuống dòng nếu tổng width các item lớn hơn width mặc định từ trên xuống|
 |wrap-reverse|các flex-items sẽ tự động xuống dòng nếu tổng width các item lớn hơn width mặc định từ dưới lên|
-1. ### flex-flow: kết hợp flex-direction và flex-wrap
+ ### 4. flex-flow: kết hợp flex-direction và flex-wrap
 ```css
 .container {
   flex-flow: column wrap;
 }
 ```
-5. ### justify-content:
+ ### 5.  justify-content:
 + dùng để căn chỉnh vị trí của các items so với trục chính(main axis).
 ```css
 .container {
@@ -73,7 +93,7 @@
 |space-around|sẽ chia khoảng cách ở đầu và cuối. Khoảng cách ở đầu và cuối sẽ bằng 1 nửa khoảng cách ở giữa 2 item với nhau|
 |space-evenly|sẽ chia khoảng cách đều khoảng cách giữa các item với item, item và main start, item với main end bằng nhau|
 
-6. ### aligh-items
+ ### 6. align-items
 + dùng để xác định cách mà các flex item được đặt trong container dọc theo chiều cross axis.
 ```css
 .container {
@@ -89,7 +109,7 @@
 |baseline|Items sẽ được đặt dựa theo các ký tự thuộc item đó.(giữa các kí tự trong items) |
 
 
-7. ### align-content
+ ### 7 .align-content
 + Tương tự như justify-content chỉ khác một chỗ là thay vì căn theo trục main axis thì align-content căn theo trục cros axis.
 ```css
 .container {
@@ -108,42 +128,42 @@
 |stretch|ines căng ra để chiếm không gian còn lại|
 
 ## Properties for the Children(flex items)
-1. ### order
+ ### 1.  order
 + các item sẽ hiển thị theo thứ tự xuất hiện trong HTML, nhưng với thuộc tính order, bạn có thể sắp xếp lại vị trí sắp xếp của các item.
 ```css
 .item {
   order: 5; /* default is 0 */
 }
 ```
-2. ### flex-grow
+ ### 2. flex-grow
 +  cho phép các phần tử giãn theo độ rộng của container.
 ```css
 .item {
   flex-grow: 4; /* default 0 */
 }
 ```
-3. ### flex-shrink
+ ### 3.  flex-shrink
 + ngược lại với thuộc tính flex-grow ở trên, nó không giãn ra mà lại co lại khi chúng ta thay đổi độ rộng của container.
 ```css
 .item {
   flex-shrink: 3; /* default 1 */
 }
 ```
-4. ### flex-basis
+ ### 4. flex-basis
 + sử dụng để xác định độ dài ban đầu của một item.
 ```css
 .item {
   flex-basis:  | auto; /* default auto */
 }
 ```
-5. ### flex
+ ### 5.  flex
 + sử dụng để gộp chung ba thuộc tính flex-grow, flex-shrink và flex-basis
 ```css
 .item {
   flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
 }
 ```
-6. ### align-self
+ ### 6. align-self
 + có tác dụng tương tự như align-items của phần container nhưng sử dụng riêng cho từng item, bạn có thể dùng nó để đặt lại vị trí cho một số item mà align-items đã quy định.
 ```css
 .item {

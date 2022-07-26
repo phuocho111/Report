@@ -1,6 +1,12 @@
 # Development environment
 
-+ ## Cài đặt Ubuntu:
+ 1. [Cài đặt ubuntu](#1-cài-đặt-ubuntu)
+ 2. [NVM](#2nvm)
+ 3. [git](#3cài-đặt-git)
+ 4. [vue](#4cài-đặt-vue-js)
+
+
+## 1. Cài đặt Ubuntu:
 [Link tiếng anh](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview)
 
 [Link Tiếng việt](https://quantrimang.com/cach-cai-ubuntu-song-song-voi-windows-bang-usb-148331)
@@ -56,7 +62,7 @@
 
 ----------------------------------------
 
-+ ##  NVM
+## 2.NVM
 
 1. ### Khái niệm:
 - nvm (Node Version Manager) là package giúp quản lí nhiều phiên bản của node.
@@ -94,7 +100,7 @@ nvm ls
 >https://github.com/nvm-sh/nvm#set-default-node-version
 
 -----------------------------------
-+ ## cài đặt Git
+## 3.Cài đặt Git
 1. ### Cài đặt git với apt
 ```sh
 sudo apt update 
@@ -106,7 +112,7 @@ git --version
 ```
 
 --------------------------------
-+ ## Cài đặt Vue js:
+## 4.Cài đặt Vue js:
 1. Install
 ```sh
 npm install -g @vue/cli
