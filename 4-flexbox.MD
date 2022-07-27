@@ -18,6 +18,9 @@
     - [5.  flex](#5--flex)
     - [6. align-self](#6-align-self)
   - [The gap property](#the-gap-property)
+  - [Exercises](#exercises)
+  - [### Source github](#-source-github)
+  - [Questions:](#questions)
    
 ### Thành phần: thùng chứa cha (flex container) và các phần tử con nằm bên trong (flex items)
 ### Thuộc tính:
@@ -182,3 +185,16 @@
   column-gap: 20px;
 }
 ```
+---
+## Exercises
+![module chat messager](https://few-mustard-099.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F548bb0d1-3492-49e7-9f73-03df90108248%2FUntitled.png?table=block&id=231d8b6a-7a51-464c-bdde-06dda9a743fa&spaceId=ec107eff-8d61-4d83-a22e-5ab345aee518&width=2000&userId=&cache=v2)
+
+### [Source github](https://github.com/phuocho111/Flexbox-)
+---
+## Questions:
+Tại sao nên sử dụng flexbox? Lợi ích của việc sử dụng flexbox?
+- Cải tiến hơn float
+- Đối với thay đổi vị trí của các nội dung theo 1 chiều (cột, hàng) thì flex sẽ giúp thực hiện đơn giản
+- có thể căn chỉnh nội dung theo hàng và cột
+- có thể thay đổi thứ tự của các nội dung trên 1 hàng hoặc cột
+- có thể thay đổi kích thước của nội dung
