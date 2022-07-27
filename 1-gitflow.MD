@@ -115,3 +115,8 @@ vì thể có thể quản lí các dự án lớn.
 ```sh
    git flow hotfix finish hotfix_branch
 ```
+---
+### Question: để xử lý 1 nội dung hotfix thì cần làm những công việc gì?
+1.	Khi có 1 Bug nghiêm trọng thì hotfix sẽ rẽ nhánh từ main Branch 
+2.	Sau khi fix lỗi thì sẽ merge về nhánh main branch và đồng thời cũng merge vào develop branch
+3.	Hotfix branch sẽ bị xóa sau khi merge vào main branch và develop branch hoàn tất 
