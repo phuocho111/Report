@@ -14,9 +14,9 @@
 - [Javascript](#javascript)
   - [Data types](#data-types)
   - [I.Kiểu dữ liệu](#ikiểu-dữ-liệu)
-    - [1.  Number](#1--number)
+    - [1. Number](#1-number)
     - [2. BigInt](#2-bigint)
-    - [3.  String](#3--string)
+    - [3. String](#3-string)
     - [4. Boolean (logical type)](#4-boolean-logical-type)
     - [5. Giá trị Null](#5-giá-trị-null)
     - [6. Giá trị Undefined](#6-giá-trị-undefined)
@@ -25,8 +25,8 @@
     - [9. The typeof operator](#9-the-typeof-operator)
   - [Loops: while and for](#loops-while-and-for)
     - [1. The "while" loop](#1-the-while-loop)
-    - [2.The “do…while” loop](#2the-dowhile-loop)
-    - [3.The “for” loop](#3the-for-loop)
+    - [2. The “do…while” loop](#2-the-dowhile-loop)
+    - [3. The “for” loop](#3-the-for-loop)
       - [Skipping parts](#skipping-parts)
     - [4. Breaking the loop](#4-breaking-the-loop)
     - [5. Continue to the next iteration](#5-continue-to-the-next-iteration)
@@ -36,12 +36,14 @@
   - [The "switch" statement](#the-switch-statement)
     - [1. The syntax](#1-the-syntax)
     - [2. An example](#2-an-example)
+    - [3. Grouping of “case”](#3-grouping-of-case)
+    - [4. Type matters](#4-type-matters)
 
 ## Data types
 
 ## I.Kiểu dữ liệu
 
-### 1.  Number
+### 1. Number
 ```javascript
 let n = 123;
 n = 12.345;
@@ -74,7 +76,7 @@ lưu ý:  `NaN ** 0 is 1`
 // the "n" at the end means it's a BigInt
 const bigInt = 1234567890123456789012345678901234567890n;
 ```
-### 3.  String
+### 3. String
 + 1 String luôn đặt trong dấu ngoặc kép  (quotes)
 ```javascript
 let str = "Hello";
@@ -187,7 +189,7 @@ while (i) { // when i becomes 0, the condition becomes falsy, and the loop stops
   i--;
 }
 ```
-### 2.The “do…while” loop
+### 2. The “do…while” loop
 + Syntax
 ```javascript
 do {
@@ -203,7 +205,7 @@ do {
 } while (i < 3);// 0, 1, 2
 ```
 + Các cú pháp của hình thức này chỉ được sử dụng khi khi muốn loop body thực thi ít nhất 1 lần bất kể điều kiện đang đúng, hình thức khác ưa thích hơn: while(){}
-### 3.The “for” loop
+### 3. The “for” loop
 + Vòng lặp for rất nhiều tổ hợp, nhưng nó cũng được sử dụng phổ biến nhất
 + Syntax
 ```javascript
@@ -391,3 +393,61 @@ switch (a) {
 }// Exactly
 ```
 + Lưu ý: nếu không các `case` kế tiếp sẽ thực hiện mà không có bất kỳ kiểm tra nào
+```javascript
+let a = 2 + 2;
+
+switch (a) {
+  case 3:
+    alert( 'Too small' );
+  case 4:
+    alert( 'Exactly!' );
+  case 5:
+    alert( 'Too big' );
+  default:
+    alert( "I don't know such values" );
+}// Exactly, Too big, I don't know such values
+```
+### 3. Grouping of “case”
++ một số biến `case` khi chia sẻ code giống nhau sẽ được nhóm lại
+```javascript
+let a = 3;
+
+switch (a) {
+  case 4:
+    alert('Right!');
+    break;
+
+  case 3: // (*) grouped two cases 3 and 5
+  case 5:
+    alert('Wrong!');
+    alert("Why don't you take a math class?");
+    break;
+
+  default:
+    alert('The result is strange. Really.');
+}
+// Wrong!, Why don't you take a math class?
+```
+### 4. Type matters
++ Hãy nhấn mạnh rằng việc kiểm tra bình đẳng luôn nghiêm ngặt. Các giá trị phải cùng loại để khớp.
+```javascript
+let arg = prompt("Enter a value?");
+switch (arg) {
+  case '0':
+  case '1':
+    alert( 'One or zero' );
+    break;
+
+  case '2':
+    alert( 'Two' );
+    break;
+
+  case 3:
+    alert( 'Never executes!' );
+    break;
+  default:
+    alert( 'An unknown value' );
+}
+// 1 và 0, 2 sẽ chạy
+//Nhưng đối với 3, kết quả của lời nhắc là một chuỗi "3", không hoàn toàn bằng === với số 3. Vì vậy, nhận được mã chết trong trường hợp 3
+```
