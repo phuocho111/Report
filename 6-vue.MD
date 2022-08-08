@@ -581,7 +581,7 @@ export default {
 ### 1. cài đặt vue router
 npm
 ```sh
-npm install vue-router@4
+npm install vue-router@3
 ```
 yarn
 ```sh
@@ -721,7 +721,7 @@ router.push({ path: '/user', params: { username } }) // -> /use
 + Để chuyển hướng từ `/home` đến `/`:
 ```javascript
 const routes = [{ path: '/home', redirect: '/' }]
-// có thể nhắm mục tiêu một tuyến đường được đặt tên
+  // redirect:đi đến 1 router không tồn tại từ thanh địa chỉ browser
 const routes = [{ path: '/home', redirect: { name: 'homepage' } }]
  ```
 + Chuyển hướng tương đối
@@ -807,9 +807,19 @@ export const router = new VueRouter({
     ]
 })
 ```
+### Question
+1. Làm thế nào để điều huớng đến 1 router bất kỳ trong hệ thống.
++ ta dùng `router.push`(location, onComplete?, onAbort?)
+2.Nếu đi đến 1 router không tồn tại từ thanh địa chỉ browser, thì mình xử lý như thế nào và xử lý ở đâu?
++ tại file chứa các path 
+```javascript
+{path:'/all-jobs', redirect:'/userGame'}
+```
+`redirect`: đi đến 1 router không tồn tại từ thanh địa chỉ browser
 
 #### [Video tham khảo](https://www.youtube.com/watch?v=juocv4AtrHo)
 ---
+
 
 ## Vuex
 ### 1. Khái niệm: 
@@ -828,7 +838,147 @@ yarn
 ```sh
 yarn add vuex@next --save
 ```
+### 3.  Store
++ `state` : nơi lưu trữ các trạng thái ứng dụng
+```javascript
+const state = {
+  count: 0
+}
+////
+export default {
+    computed: {
+        result() {
+            return this.$store.state.result;
+        }
+    }
+}
+```
++ `getters` : là những hàm để lấy ra state, có helper là `mapGetters`
+```javascript
+const state = {
+  getEvenNumbers: state => {
+    return state.numbers.filter(item => item%2 === 0)
+  }
+  hasNumber : state => num => {
+    return state.numbers.include(num)
+  }
+}
+```
 
++ `mutations` :  những hàm để thay đổi state, helper là `mapMutations`, `commit` để gọi `mutations`
+```javascript
+// ...
+mutations: {
+  increment (state, payload) {
+    state.count += payload.amount
+  }
+}
+//
+store.commit('increment', {
+  amount: 10
+})
+//.....
+```
++ `actions` : tương tự như mutation,Thay vì thay đổi trạng thái thì các action commit thay đổi `mutations`, nó có thể chứa các hoạt động không đồng bộ. có helper là `mapAction`,`store.dispatch`, `dispatch` để gọi `actions`
+
+```javascript
+//Composing Actions
+actions: {
+  actionA ({ commit }) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        commit('someMutation')
+        resolve()
+      }, 1000)
+    })
+  }
+}
+///
+store.dispatch('actionA').then(() => {
+  // ...
+})
+//
+store.dispatch('actionA').then(() => {
+  // ...
+})
+
+//action khac
+actions: {
+  // ...
+  actionB ({ dispatch, commit }) {
+    return dispatch('actionA').then(() => {
+      commit('someOtherMutation')
+    })
+  }
+}
+
+///   dùng async / await, để xử lí các hành động
+// assuming `getData()` and `getOtherData()` return Promises
+
+actions: {
+  async actionA ({ commit }) {
+    commit('gotData', await getData())
+  },
+  async actionB ({ dispatch, commit }) {
+    await dispatch('actionA') // wait for `actionA` to finish
+    commit('gotOtherData', await getOtherData())
+  }
+}
+```
+
++ Module: Vuex cho phép chia nhỏ store thành các module nhỏ hơn, mỗi module cũng có state, mutation, action, getter và thậm chí còn cho phép các module lồng nhau.
+
+
+### Question
+1. State management là gì? Tại sao lại cần sử dụng nó?
++ phương pháp để quản lý state trong ứng dụng
++ vì có thể chia sẻ dữ liệu giữa các component với nhau và cập nhập dữ liệu khi các component thay đổi
+2. Lợi ích của việc sử dụng vuex trong dự án vuejs? 
++ Với những dự án sử dụng nhiều component hoặt động độc lập, phức tạp thì Vuex với nguyên tắc state có thể thay đổi theo kiểu dự đoán sẽ quản lí các state bằng việc sử dụng store toàn cục vì thế các component có thể chia sẻ, thay đổi dữ liệu 1 cách dễ dàng thồng qua store toàn cục.
+
+---
+## Vuetify
+#### 1. khái niệm: là 1 UI Framework hoàn chỉnh được xây dựng trên VueJs
+#### 2. Cài đặt
+```sh
+vue add vuetify
+```
+Vue UI install
+```sh
+# Then start the UI
+vue ui
+```
+Nuxt install
+```sh
+yarn add @nuxtjs/vuetify -D
+# OR
+npm install @nuxtjs/vuetify -D
+```
+Webpack install
+```sh
+yarn add vuetify
+# OR
+npm install vuetify
+```
+```sh
+yarn add sass@~1.32 sass-loader deepmerge -D
+# OR
+npm install sass@~1.32 sass-loader deepmerge -D
+```
+#### 3. Import Vuetify
+```javaScript
+// src/main.js
+import Vue from 'vue'
+import App from './App.vue'
+import vuetify from './plugins/vuetify';
+
+Vue.config.productionTip = false
+
+new Vue({
+  vuetify,
+  render: h => h(App)
+}).$mount('#app')
+```
 
 
 
