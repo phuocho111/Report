@@ -107,8 +107,12 @@ export default {
 }
 ```
 ## Method, computed, watcher
-+ methods: hàm của vue object
-+ watcher: theo dõi sự thay dổi của data
+
+1. Methods là tập hợp những functions,dùng để xử lý khi bắt sự kiện với DOM hoặc để tái sử dụng code, Methods cho phép truyền vào tham số
+- với `{{data}}` method không biết được nó cần thực thi khi nào,  nó sẽ luôn thực thi khi re-render(vì thế sinh ra computed)
+2. Computed hữu dụng khi thao tác với các dữ liệu đã tồn tại, nó làm việc với `data` và lấy dữ liệu các đối tượng xử lí cho ra kết quả ở `{{}}` Computed không cho phép truyền tham số
+3. Watched có thể giám sát và lắng nghe được sự thay đổi của các đối tượng (message)
+
 |  | Methods | computed | watcher |
 | --- | --- | --- | --- |
 | cho phép có tham số | có | không | có |
@@ -169,7 +173,7 @@ export default {
 </template>
 ```
 1. `ref` trong `v-for`
-+ Khi refđược sử dụng bên trong v-for, giá trị ref thu được sẽ là một mảng chứa các phần tử tương ứng
++ Khi ref được sử dụng bên trong v-for, giá trị ref thu được sẽ là một mảng chứa các phần tử tương ứng
 ```html
    <input :ref="(el) => { /* assign el to a property or ref */ }">
 ```
@@ -934,7 +938,7 @@ actions: {
 + phương pháp để quản lý state trong ứng dụng
 + vì có thể chia sẻ dữ liệu giữa các component với nhau và cập nhập dữ liệu khi các component thay đổi
 2. Lợi ích của việc sử dụng vuex trong dự án vuejs? 
-+ Với những dự án sử dụng nhiều component hoặt động độc lập, phức tạp thì Vuex với nguyên tắc state có thể thay đổi theo kiểu dự đoán sẽ quản lí các state bằng việc sử dụng store toàn cục vì thế các component có thể chia sẻ, thay đổi dữ liệu 1 cách dễ dàng thồng qua store toàn cục.
++ Với những dự án sử dụng nhiều component hoặt động độc lập, phức tạp thì Vuex với nguyên tắc state có thể thay đổi theo kiểu dự đoán sẽ quản lí các state bằng việc sử dụng store toàn cục vì thế các component có thể chia sẻ, thay đổi dữ liệu 1 cách dễ dàng thông qua store toàn cục.
 
 ---
 ## Vuetify
